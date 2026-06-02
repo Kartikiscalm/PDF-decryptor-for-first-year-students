@@ -42,4 +42,4 @@ If the professor changes the password for the study materials in the future, you
 - **Batch Processing**: Handles multiple PDFs in one go.
 
 ---
-*Developed to enhance the study experience at IIT Jodhpur.*
+*Never trust a teacher, never trust a book, trust yourself! (ifykyk)*

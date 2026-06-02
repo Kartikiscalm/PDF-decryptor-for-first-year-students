@@ -1,4 +1,4 @@
-# PDF Quadrant Splitter
+# PDF Quadrant Splitter and Decryptor
 
 A specialized tool designed to decrypt and split composite PDF pages into individual slides.
 

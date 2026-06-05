@@ -1,5 +1,3 @@
-
-
 import os
 import copy
 from pypdf import PdfReader, PdfWriter

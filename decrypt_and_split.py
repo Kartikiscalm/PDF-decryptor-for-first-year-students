@@ -1,12 +1,4 @@
-#!/usr/bin/env python3
-"""
-Decrypt password-protected PDFs and split each page into 4 quadrant sub-pages.
 
-Usage:
-    1. Place encrypted PDFs in the 'Encrypted' folder
-    2. Run: python3 decrypt_and_split.py
-    3. Pick up the processed PDFs from the 'Unencrypted' folder
-"""
 
 import os
 import copy
@@ -17,16 +9,13 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 ENCRYPTED_DIR = os.path.join(SCRIPT_DIR, "Encrypted")
 UNENCRYPTED_DIR = os.path.join(SCRIPT_DIR, "Unencrypted")
 
-# Reference image dimensions (pixels) the coordinates are based on
 IMG_W, IMG_H = 1526, 1162
 
-# Quadrant pixel boundaries: (x1, y1, x2, y2)
-# Order: top-left, top-right, bottom-left, bottom-right
 QUADRANTS_PX = [
-    (90, 120, 720, 560),     # Slide 1 — top-left quadrant
-    (780, 120, 1410, 560),   # Slide 2 — top-right quadrant
-    (90, 600, 720, 1060),    # Slide 3 — bottom-left quadrant
-    (780, 600, 1410, 1060),  # Slide 4 — bottom-right quadrant
+    (90, 120, 720, 560),     
+    (780, 120, 1410, 560),   
+    (90, 600, 720, 1060),    
+    (780, 600, 1410, 1060),  
 ]
 
 
@@ -47,10 +36,10 @@ def process_pdf(input_path, output_path):
         for px_x1, px_y1, px_x2, px_y2 in QUADRANTS_PX:
             new_page = copy.deepcopy(page)
 
-            # Map pixel coordinates to PDF coordinates
+            
             x1 = pdf_x0 + (px_x1 / IMG_W) * pdf_w
             x2 = pdf_x0 + (px_x2 / IMG_W) * pdf_w
-            # Flip y-axis: pixel y goes top-down, PDF y goes bottom-up
+            
             y1 = pdf_y0 + (1 - px_y2 / IMG_H) * pdf_h
             y2 = pdf_y0 + (1 - px_y1 / IMG_H) * pdf_h
 
